@@ -1,0 +1,94 @@
+.footer {
+  padding: 50px 5vw;
+  background: linear-gradient(180deg, #d3e0fb, #eef1fa);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.footerSub {
+  margin: 20px;
+  width: 220px;
+}
+.footerSub:nth-child(3) {
+  width: 250px;
+}
+.footerSub img {
+  margin-bottom: 20px;
+  width: 180px;
+  object-fit: contain;
+}
+.footerSub p {
+  font-size: 13px;
+  color: #444;
+  line-height: 25px;
+}
+.footerSubICons {
+  margin-top: 20px;
+}
+.footerSubICons .footerSubICon {
+  font-size: 15px !important;
+  transition: 0.5s ease;
+}
+.footerSubICons button {
+  padding: 7px;
+  margin: 3px;
+  background: #fff;
+  transition: 0.5s ease;
+}
+.footerSubICons button:hover {
+  background: var(--blue);
+}
+.footerSubICons button:hover .footerSubICon {
+  color: #fff;
+}
+.footerSub h3 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.footerSub a {
+  display: block;
+  margin: 15px 0;
+  text-decoration: none;
+  color: inherit;
+  font-size: 13px;
+  color: #555;
+}
+.footerSubDiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.footerSubDiv > :nth-child(1) {
+  margin-right: 10px;
+  color: var(--blue);
+}
+.footerSubDiv > :nth-child(2) {
+  line-height: inherit;
+  color: #555;
+}
+.footerSub:last-child p {
+  margin-top: -5px;
+}
+.footerEmail {
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  background: #fff;
+  padding: 0 10px;
+  padding-right: 0;
+  margin-top: 20px;
+}
+.footerEmail input {
+  flex: 1;
+  width: 0;
+  border: none;
+  outline: none;
+}
+.footerEmail button {
+  padding: 10px;
+  background: var(--blue);
+}
+.footerEmail button * {
+  color: #fff;
+}

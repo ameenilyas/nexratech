@@ -1,0 +1,35 @@
+.header {
+  top: 0;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 50px;
+  box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  z-index: 9;
+}
+.header > img {
+  width: 175px;
+  object-fit: contain;
+}
+.headerNav {
+  flex: 0.5;
+  display: flex;
+  justify-content: space-evenly;
+}
+.headerNav a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 17px;
+  transition: color 0.3s ease;
+  margin: 0 20px;
+}
+.headerNav a:hover {
+  color: var(--blue);
+}
+.menuIcon {
+  color: var(--blue);
+  font-size: 32px;
+}
