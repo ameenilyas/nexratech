@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "./Banner";
 import classes from "./HomeScreen.module.css";
 import {
@@ -6,7 +6,6 @@ import {
   Home,
   LocationOn,
   Phone,
-  Menu,
   AccessTime,
   Facebook,
   Instagram,
@@ -15,11 +14,30 @@ import {
   Pinterest,
   Send,
   Twitter,
+  Menu,
 } from "@material-ui/icons";
-import { Button, Card, CardActionArea, IconButton } from "@material-ui/core";
+import {
+  Button,
+  Card,
+  CardActionArea,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+} from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 function HomeScreen() {
+  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setOpen(false);
+    });
+    return () => window.removeEventListener("resize", () => {});
+  }, []);
+
   const services = [
     {
       img:
@@ -63,6 +81,114 @@ function HomeScreen() {
     },
   ];
 
+  const drawerInfo = (
+    <Drawer anchor='right' open={open} onClose={() => setOpen(false)}>
+      <div className={classes.drawerInfo}>
+        <IconButton onClick={() => setOpen(false)}>
+          <img
+            className={classes.headerImg}
+            src='https://netmind.net/en/wp-content/uploads/2020/06/9-Dots.png'
+            alt=''
+          />
+        </IconButton>
+        <img src='https://nexratech.com/images/logo.png' alt='' />
+        <p>
+          Braintech quisque placerat vitae lacus ut scelerisque. Fusce luctus
+          odio ac nibh luctus, in porttitor theo lacus egestas etiusto odio data
+          center.
+        </p>
+        <div className={classes.contactLeftReach}>
+          <p>
+            <Home />
+          </p>
+          <div className={classes.contactLeftSubReach}>
+            <h4>Email:</h4>
+            <p>123@gmail.com</p>
+          </div>
+        </div>
+        <div className={classes.contactLeftReach}>
+          <p>
+            <Phone />
+          </p>
+          <div className={classes.contactLeftSubReach}>
+            <h4>Phone:</h4>
+            <p>(123)34556678</p>
+          </div>
+        </div>
+        <div className={classes.contactLeftReach}>
+          <p>
+            <LocationOn />
+          </p>
+          <div className={classes.contactLeftSubReach}>
+            <h4>Address:</h4>
+            <p>New Jersey ,1202 ,USA</p>
+          </div>
+        </div>
+        <div className={classes.footerSubICons}>
+          <IconButton>
+            <Facebook className={classes.footerSubICon} />
+          </IconButton>
+          <IconButton>
+            <Twitter className={classes.footerSubICon} />
+          </IconButton>
+          <IconButton>
+            <Pinterest className={classes.footerSubICon} />
+          </IconButton>
+          <IconButton>
+            <Instagram className={classes.footerSubICon} />
+          </IconButton>
+          <IconButton>
+            <LinkedIn className={classes.footerSubICon} />
+          </IconButton>
+        </div>
+      </div>
+    </Drawer>
+  );
+
+  const drawerMenu = (
+    <Drawer anchor='right' open={openMenu} onClose={() => setOpenMenu(false)}>
+      <div className={classes.openMenu}>
+        <List>
+          <ListItem
+            className={classes.openMenuList}
+            button
+            onClick={() => setOpenMenu(false)}
+          >
+            <a href='#home'>Home</a>
+          </ListItem>
+          <ListItem
+            className={classes.openMenuList}
+            button
+            onClick={() => setOpenMenu(false)}
+          >
+            <a href='#services'>Services</a>
+          </ListItem>
+          <ListItem
+            className={classes.openMenuList}
+            button
+            onClick={() => setOpenMenu(false)}
+          >
+            <a href='#about'>About</a>
+          </ListItem>
+          <ListItem
+            className={classes.openMenuList}
+            button
+            onClick={() => setOpenMenu(false)}
+          >
+            <a href='#project'>Project</a>
+          </ListItem>
+          <ListItem
+            className={classes.openMenuList}
+            button
+            onClick={() => setOpenMenu(false)}
+          >
+            <a href='#contact'>Contact</a>
+          </ListItem>
+        </List>
+      </div>
+    </Drawer>
+  );
+
   return (
     <div className={classes.home}>
       <div className={classes.header}>
@@ -74,16 +200,29 @@ function HomeScreen() {
           <a href='#project'>Project</a>
           <a href='#contact'>Contact</a>
         </div>
-        <IconButton>
-          <Menu className={classes.menuIcon} />
+        <IconButton
+          className={classes.openInfoButton}
+          onClick={() => setOpen(true)}
+        >
+          <a href='#home'>
+            <img
+              className={classes.headerImg}
+              src='https://netmind.net/en/wp-content/uploads/2020/06/9-Dots.png'
+              alt=''
+            />
+          </a>
+        </IconButton>
+        <IconButton
+          className={classes.openMenuButton}
+          onClick={() => setOpenMenu(true)}
+        >
+          <Menu />
         </IconButton>
       </div>
 
       <Banner />
-      <div
-        id='services'
-        className={`${classes.serviceSection} ${classes.snap}`}
-      >
+      <div id='services' />
+      <div className={`${classes.serviceSection} ${classes.snap}`}>
         <h1>Services</h1>
         <div className={classes.services}>
           {services.map(({ title, img, text }, index) => (
@@ -94,6 +233,7 @@ function HomeScreen() {
             </div>
           ))}
         </div>
+        <Button variant='contained'>View All Services</Button>
       </div>
       <div id='about' className={`${classes.about} ${classes.snap}`}>
         <h1>About</h1>
@@ -279,6 +419,8 @@ function HomeScreen() {
           </div>
         </div>
       </div>
+      {drawerInfo}
+      {drawerMenu}
     </div>
   );
 }

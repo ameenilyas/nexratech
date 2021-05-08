@@ -8,6 +8,7 @@
   box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.4);
   background-color: #fff;
   z-index: 9;
+  transition: .3s ease;
 }
 .header > img {
   width: 175px;
@@ -29,6 +30,11 @@
 .headerNav a:hover {
   color: var(--blue);
 }
+.headerImg {
+  width: 30px;
+  object-fit: contain;
+
+}
 .menuIcon {
   color: var(--blue);
   font-size: 32px;
@@ -44,7 +50,7 @@
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
 }
-.home::-webkit-scrollbar {
+/* .home::-webkit-scrollbar {
   width: 0 !important;
 }
 .home .snap {
@@ -54,12 +60,15 @@
   align-items: center;
   min-height: 100vh;
   scroll-snap-align: start;
-}
+} */
 .home .snap:last-child {
   flex-direction: row;
   min-height: fit-content;
 }
 /* Services */
+.serviceSection{
+  text-align: center;
+}
 .serviceSection h1 {
   font-size: 50px;
   font-weight: 500;
@@ -67,11 +76,25 @@
   /* margin-bottom: 30px; */
 }
 .services {
+  text-align: center !important;
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.serviceSection > button ,
+.serviceSection > button:hover {
+  margin-top: 50px;
+  padding: 10px 30px;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 30px;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
 .service {
   cursor: pointer;
   width: 350px;
@@ -121,12 +144,17 @@
   /* margin-bottom: 30px; */
 }
 .aboutSection {
+  margin-top: 20px;
   display: flex;
   align-items: center;
 }
 .aboutSection img {
-  width: 600px;
+  max-width: 700px;
+  width: 60%;
+
   object-fit: contain;
+      margin: auto;
+
   margin-right: 100px;
 }
 .aboutContent h2 {
@@ -188,22 +216,24 @@
   margin-bottom: 15px;
 }
 .projectSection {
-  margin: 50px;
+  /* margin: 50px; */
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 .projectCard {
-  margin: 30px 20px;
+    max-width: 350px;
+    width: 100%;
+    min-width: 300px;
+
+  margin: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 .projectCard img {
-  max-width: 500px;
   width: 100%;
-  min-width: 250px;
   object-fit: contain;
 }
 
@@ -306,6 +336,7 @@
 }
 .contactFormInput input,
 .contactFormInput textarea {
+  width: 0;
   flex: 1;
   padding: 15px;
   font-size: 16px;
@@ -428,10 +459,140 @@
   border: none;
   outline: none;
 }
-.footerEmail button {
+.footerEmail button,
+.footerEmail button:hover {
   padding: 10px;
   background: var(--blue);
 }
 .footerEmail button * {
   color: #fff;
+}
+.drawerInfo{
+  max-width: 450px;
+}
+.drawerInfo{
+  min-height: 100vh;
+  background: linear-gradient(90deg, #d2dbe6,#fff);
+  padding: 20px 40px;
+}
+
+.drawerInfo > button {
+  display: block;
+  margin-left: auto;
+}
+.drawerInfo > button > img {
+  width: 35px;
+  object-fit: contain;
+
+}
+
+.drawerInfo > img{
+  width:125px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.drawerInfo > p{
+  font-size: 14px;
+  word-spacing: 3px;
+  line-height: 25px;
+}
+.drawerInfo  p{
+  color: #555;
+}
+.drawerInfo .footerSubICons button {
+  padding: 10px;
+  margin: 5px;
+  background: dodgerblue ;
+}
+.drawerInfo .footerSubICons{
+  margin-top: 50px;
+}
+
+.drawerInfo .footerSubICons .footerSubICon {
+  font-size: 24px !important;
+  color: #fff;
+}
+
+
+
+
+.openMenu{
+  color: #3c79d6;
+  font-size: 24px !important;
+}
+
+
+.openMenuButton{
+  display: none  !important;
+}
+
+
+.openMenu{
+  display: flex;
+}
+.openMenuList{
+  background: #f9f9f9;
+  border-bottom:  1px solid rgba(0, 0, 0, 0.3) !important;
+}
+.openMenu a{
+  display: block;
+  width: 250px;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+@media (max-width:991px) {
+  
+.openMenuButton {
+  display: block !important;
+}
+.headerNav,
+.openInfoButton {
+  display: none !important;
+}
+.aboutSection{
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.aboutSection{
+  text-align: center;
+}
+.aboutContent{
+  margin-top: 20px;
+}
+.aboutContent > p{
+  margin: auto !important;
+
+}
+.aboutPoints{
+  width: max-content;
+  min-width: fit-content;
+  margin: auto;
+  margin-bottom: 50px;
+  text-align: center;
+}
+}
+
+
+@media (max-width:725px) {
+  .contactLeft{
+    display: none;
+  }
+}
+@media (max-width:550px) {
+  .header img{
+    width: 150px;
+  }
+  .header{
+    padding: 15px 20px;
+  }
+  .aboutSection img{
+    margin: auto;
+    width: 90%;
+  }
 }
